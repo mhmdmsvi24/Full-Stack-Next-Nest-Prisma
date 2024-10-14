@@ -15,15 +15,21 @@ module.exports = {
     node: true,
     jest: true,
   },
-  ignorePatterns: [".eslintrc.js"],
+  ignorePatterns: [".eslintrc.js"], // Make sure this doesn't ignore your src folder
+  overrides: [
+    {
+      files: ["*.ts", "*.tsx"], // Apply these rules to TypeScript files
+      rules: {
+        // TypeScript-specific rules
+        "@typescript-eslint/interface-name-prefix": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+      },
+    },
+  ],
   rules: {
-    // TypeScript-specific rules
-    "@typescript-eslint/interface-name-prefix": "off",
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off",
-    "@typescript-eslint/no-explicit-any": "off",
-
-    // Prettier-related rules
+    // General rules
     "prettier/prettier": [
       "error",
       {
